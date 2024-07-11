@@ -1,2 +1,3 @@
 # DEVOPS_Debi
-test git 
+ALL TASKS
+

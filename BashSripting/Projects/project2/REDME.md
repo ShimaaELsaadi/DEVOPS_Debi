@@ -18,13 +18,12 @@ This project involves creating a shell script to manage monitoring tool events b
 4. The script will update the `events_status.txt` file if the incident is closed.
 
 ## Example
-1-ticket_status
-    INC0000401355  opened
-    INC0000401340  closed
-    INC0000401356  closed
-2-events_tickets.txt
-    NC0000401355          6192fd9a-9b03-71ec-01b9-0a4e23470000 
-    INC0000401340         6192fd9a-9b03-71ec-01b9-0a4e23454213
-3-Output 
-Events_status.txt 
+1. `ticket_status.txt`
+- INC0000401355  opened
+- INC0000401340  closed
+- INC0000401356  closed
+2. `events_tickets.txt`
+   - NC0000401355          6192fd9a-9b03-71ec-01b9-0a4e23470000 
+   - INC0000401340         6192fd9a-9b03-71ec-01b9-0a4e23454213
+3. `Output(Events_status.tx)`
 6192fd9a-9b03-71ec-01b9-0a4e23454213    closed

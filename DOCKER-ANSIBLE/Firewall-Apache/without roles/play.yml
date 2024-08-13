@@ -1,0 +1,43 @@
+---
+- name: install httpd
+  hosts: all
+  become: yes
+  gather_facts: false
+  tasks:
+    - name: update apt pkg
+      apt:
+        update_cache: yes
+    - name: install apache
+      apt:
+        name: apache2
+        state: present
+    - name: ensure apache is started and enable
+      service:
+       # ansible.builtin.systemd:
+        name: apache2
+        state: started
+        enabled: yes
+    - name: install firewall
+      apt:
+        name: firewalld
+        state: present
+    - name: ensure firewall is started and enable
+      service:
+        name: firewalld
+        state: started
+        enabled: yes
+    - name: allow http svc in fw
+      command: firewall-cmd --permanent --add-service=http
+      notify:
+        - Reload firewalld
+    - name: chk if fw is installed
+      shell: dpkg -l | grep firewalld
+      register: firewalld_installed
+      changed_when: false
+      failed_when: false
+    - name: Reload firewalld
+      command: firewall-cmd --reload
+      when: firewalld_installed.rc == 0
+  handlers:
+    - name: Reload firewalld
+      command: firewall-cmd --reload

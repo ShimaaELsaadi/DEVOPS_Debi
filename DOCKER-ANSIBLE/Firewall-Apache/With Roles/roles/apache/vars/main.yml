@@ -1,0 +1,4 @@
+---
+os_family: Debian
+apache_service: apache2
+apache_packages: apache2

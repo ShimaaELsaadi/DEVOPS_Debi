@@ -1,0 +1,14 @@
+# ---
+# - name: apt
+#   become: yes
+#   tasks:
+#     - name: update apt pkg
+#       ansible.builtin.apt:
+#          update_cache: true
+#          state: present
+  
+#     - name: Upgrade apt cache.
+#       apt:
+#         upgrade: true  
+#   #when: ansible_pkg_mgr == pakage    
+

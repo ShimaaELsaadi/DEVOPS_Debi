@@ -1,0 +1,52 @@
+---
+- name: install firewall
+  apt:
+    name: "{{ firewall_package }}"
+    state: present
+  when:  ansible_os_family == os_family
+
+- name: Allow Apache2 in firewall
+  command: ufw allow "{{ apache_service }}"
+  notify: reload firewall
+
+- name: check firewall installed and started
+  apt:
+    name: "{{ firewall_package }}"
+    state: present
+    enabled: yes
+  when:  ansible_os_family == os_family
+
+- name: Enable UFW firewall
+  command: ufw --force enable
+  when: ansible_os_family == os_family
+
+
+
+
+
+
+# ---
+# - name: install firewall
+#   become: yes
+#   apt:
+#     name: "{{ firewall_package }}"
+#     state: present
+#   when:  ansible_os_family == os_family
+
+# - name: Allow Apache2 in firewall
+#   become: yes
+#   command: ufw allow "{{ apache_service }}"
+#   notify: reload firewall
+
+# - name: check firewall installed and started
+#   become: yes
+#   apt:
+#      name: "{{ firewall_package }}"
+#      state: present
+#      enabled: yes
+#   when:  ansible_os_family == os_family
+
+# - name: Enable UFW firewall
+#   command: ufw --force enable
+#   when: ansible_os_family == os_family
+

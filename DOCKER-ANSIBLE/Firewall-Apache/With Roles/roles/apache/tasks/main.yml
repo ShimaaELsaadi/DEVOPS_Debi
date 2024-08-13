@@ -1,0 +1,8 @@
+---
+- name: Install apache packages
+  ansible.builtin.package:
+    name: "{{ apache_packages }}"
+    state: present
+  when:  ansible_os_family == os_family
+  notify: Start apache service
+

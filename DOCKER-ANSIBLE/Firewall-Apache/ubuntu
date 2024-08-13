@@ -1,0 +1,8 @@
+FROM ubuntu:22.04
+ 
+RUN useradd -m mu && echo "mu:asd" | chpasswd
+ 
+ 
+# Set the default command to run a shell
+CMD ["tail", "-f", "/dev/null"]
+
